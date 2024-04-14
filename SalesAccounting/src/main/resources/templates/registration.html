@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Учет продаж сервисов</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+	<a href="/">
+		    <img th:src="@{/images/logo.png}" width="60" height="60"/>
+		</a>
+</head>
+	<header>
+		<div class="login">
+		<div class="form">
+		<h2 class="logo">Регистрация</h2>
+	<main>
+		<form th:action="@{/register}" th:object="${user}" method="POST" class="add-form">
+			<span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="validationError"></span>
+       		<input type="text" id="username" name="username" placeholder="Введите имя пользователя" th:value="*{username}" ><br>
+	        <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="validationError"></span>
+	        <input type="password" id="password" name="password" placeholder="Введите пароль" th:value="*{password}" ><br>
+	        <input type="password" id="passwordRepeat" name="passwordRepeat" placeholder="Повторите пароль" th:value="${passwordRepeat}" ><br>
+	        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="validationError"></span>
+	        <input type="text" id="email" name="email" placeholder="Введите электронную почту" th:value="*{email}" ><br>
+	        <input type="submit" value="Добавить" class="sumbit">
+	       <p><a th:href="@{/login}" class="text">Нажми если есть аккаунт</a></p>
+	    </form>
+	     </div>
+		</div>
+		<main>
+	</main>
+</header>
+</body>
+</html>

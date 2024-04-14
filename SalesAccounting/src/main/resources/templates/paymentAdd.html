@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Учет продаж сервисов</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+</head>
+	<header>
+		<a href="/">
+		    <img th:src="@{/images/logo.png}" width="60" height="60"/>
+		</a>
+		<h2 class="logo" style="color:midnightblue">Добавление продажи</h2>
+		<div class="navigation">
+			<a href="/payment">Назад</a>
+		</div>
+	</header>
+	<main>
+		<form th:action="@{/payment/add}" th:object="${payment}" method="POST" class="add-form">
+			<label class="titleModel" style="color:midnightblue">Клиент</label>
+			<span th:if="${#fields.hasErrors('client')}" th:errors="*{client}" class="validationError"></span>
+			<select th:field="*{client}" id="listClient">
+				<option value="">Выберите клиента</option>
+			    <option th:each="client: ${client}" th:value="${client.id}" th:text="${client.name}"></option>
+			</select> <br><br>
+			<label class="titleModel" style="color:midnightblue">Cервис</label>
+			<span th:if="${#fields.hasErrors('services')}" th:errors="*{services}" class="validationError"></span>
+			<select th:field="*{services}" id="listService">
+				<option value="">Выберите сервис</option>
+			    <option th:each="services : ${services}" th:value="${services.id}" th:text="${services.nameServices}"></option>
+			</select><br><br>
+	        
+	        <label for="paymentQuantity" style="color:midnightblue">Количество проданных сервисов:</label>
+        <input type="text" id="paymentQuantity" th:field="*{paymentQuantity}" required>
+        <span class="validationError" 
+        th:if="${#fields.hasErrors('paymentQuantity')}" 
+        th:errors="*{paymentQuantity}">quantity Error</span><br>
+        
+        <label for="paymentAmount" style="color:midnightblue">Сумма покупки:</label>
+        <input type="text" id="paymentAmount" th:field="*{paymentAmount}" required>
+        <span class="validationError" 
+        th:if="${#fields.hasErrors('paymentAmount')}" 
+        th:errors="*{paymentAmount}">Amount Error</span><br>
+       </div>
+	        <input type="submit" value="Добавить" class="buttonAdd" >
+	    </form>
+	</main>
+</body>
+</html>

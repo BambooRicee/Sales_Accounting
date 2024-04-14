@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Учет продаж сервисов</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+</head>
+
+	<header>
+		<a href="/">
+		    <img th:src="@{/images/logo.png}" width="60" height="60"/>
+		</a>
+		<h2 class="logo" style="color:midnightblue">Редактировать клиента</h2>
+		<div class="navigation">
+			<a href="/client">Назад</a>
+		</div>
+	</header>
+	
+	<main>
+		<form th:action="@{/client/add}" th:object="${client}" method="POST" class="add-form">
+			<input name="id" type="hidden" th:value="*{id}">
+			 <label for="name" style="color:midnightblue">Имя:</label>
+        <input type="text" id="name" th:field="*{name}" required>
+        <span class="validationError" 
+        th:if="${#fields.hasErrors('name')}" 
+        th:errors="*{name}">name Error</span><br>
+ 
+         <label for="emailClient" style="color:midnightblue">Email:</label>
+        <input type="text" id="emailClient" th:field="*{emailClient}" required>
+        <span class="validationError" 
+        th:if="${#fields.hasErrors('emailClient')}" 
+        th:errors="*{emailClient}">Email Error</span><br>
+        
+          <label for="phone" style="color:midnightblue">Телефон:</label>
+        <input type="text" id="phone" th:field="*{phone}" required>
+        <span class="validationError" 
+        th:if="${#fields.hasErrors('phone')}" 
+        th:errors="*{phone}">Phone Error</span><br>
+        
+        <label for="status" style="color:midnightblue">Статус:</label>
+        <input type="text" id="status" th:field="*{status}" required>
+        <span class="validationError" 
+        th:if="${#fields.hasErrors('status')}" 
+        th:errors="*{status}">Status Error</span><br>
+	        <input type="submit" value="Сохранить" class="buttonAdd" >
+	    </form>
+	</main>
+</body>
+</html>

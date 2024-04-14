@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Учет продаж сервисов</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+	<a href="/">
+		    <img th:src="@{/images/logo.png}" width="60" height="60"/>
+		</a>
+
+</head>
+	<header>
+		<div class="login">
+		<div class="form">
+		<h2>Авторизация</h2>
+		<main>
+		<form method="POST" th:action="@{/login}" id="loginForm">
+			<span th:if="${param.error}" class="validationError">Ошибка входа</span><br>
+			<span th:if="${param.error}" class="validationError">Проверьте имя пользователя или пароль</span><br>
+       		<input type="text" id="username" name="username" placeholder="Введите имя пользователя" th:value="*{username}" >
+	        <input type="password" id="password" name="password" placeholder="Введите пароль" th:value="*{password}" >
+	        <input type="submit" value="Войти" class="sumbit">
+			<p><a th:href="@{/register}" class="text">Нажми если нет аккаунта</a></p>
+		</form>
+</div>		
+</div>
+</main>
+</header>
+</body>
+</html>

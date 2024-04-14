@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Учет продаж сервисов</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+	</head>
+	<header>
+	<a href="/">
+		    <img th:src="@{/images/logo.png}" width="60" height="60"/>	
+		</a>
+		<h2 class="logo" style="color:midnightblue">Учет продаж сервисов </h2>
+		 <div class="menu">
+        <ul>
+			<li><a href="client">Клиенты</a></li>
+			<li><a href="services">Сервисы</a></li>
+			<li><a href="payment">Продажи сервисов</a></li>
+		</ul>
+		</div>
+	</header>
+	<header>
+		<div class="log">
+		<div class="form">
+			<main>
+		<div th:switch="${username}"> 
+			<div th:case="anonymousUser">
+				<form th:action="@{/login}" class="add-form">
+					<h3 style="text-align: center;">Авторизация</h3>
+	        		<input type="submit" value="Войти" class="pressed-button" style="display: block; margin: 0 auto;">
+	   	 		</form>
+			</div>
+		  	<div th:case="*">
+		  		<form th:action="@{/logout}" method="post" th:object="${user}" class="add-form">
+		  			<label class="titleModel">[[${user.username}]] </label><br>
+	        		<label class="titleModel">Email: [[${user.email}]]</label><br>
+	        		<input type="submit" value="Выйти" class="sumbit">
+	   	 		</form>
+		  	</div> 
+		</div>
+	</div>
+	</div>
+	</main>
+</head>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Учет продаж сервисов</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">	
+</head>
+	<header>
+		<a href="/">
+		    <img th:src="@{/images/logo.png}" width="60" height="60"/>
+		</a>
+		<h2 class="logo" style="color:midnightblue">Добавить сервис</h2>
+		<div class="navigation">
+			<a href="/services">Назад</a>
+		</div>
+	</header>
+	<main>
+		<form th:action="@{/services/add}" th:object="${services}" method="POST" class="add-form">
+		
+			<label class="titleModel" style="color:midnightblue">Название сервиса</label>
+			<span th:if="${#fields.hasErrors('nameServices')}" th:errors="*{nameServices}" class="validationError"></span>
+       		<input type="text" id="nameServices" name="nameServices" placeholder="Введите название сервиса" th:value="*{nameServices}" ><br>
+			
+
+	        <input type="submit" value="Добавить" class="buttonAdd" >
+	    </form>
+	</main>
+	
+</body>
+
+</html>

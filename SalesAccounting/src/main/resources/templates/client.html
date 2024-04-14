@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Учет продаж сервисов</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+</head>
+	<header>
+		<a href="/">
+		    <img th:src="@{/images/logo.png}" width="60" height="60"/>
+		</a>
+		<h2 class="logo" style="color:midnightblue">Клиенты</h2>
+		 <div class="menu">
+        <ul>
+			<li><a href="client">Клиенты</a></li>
+			<li><a href="services">Сервисы</a></li>
+			<li><a href="payment">Продажи сервисов</a></li>
+		</ul>
+		</div>
+	</header>
+		<main>
+		<table>
+	        <tr>
+	            <th>№</th>
+	            <th>Имя</th>
+	            <th>Email</th>
+	            <th>Телефон</th>
+	            <th>Статус</th> 
+	            <th><a href="/client/add">Добавить</a></th>
+	        </tr>
+	           <tr th:each="client : ${client}">
+        <td th:text="${client.id}"></td>
+        <td th:text="${client.name}"></td>
+        <td th:text="${client.emailClient}"></td>
+        <td th:text="${client.phone}"></td>
+        <td th:text="${client.status}"></td>
+					
+					
+				<td style="width: 10px;" class="center-align">
+					<form method="POST" th:action="@{/client}" th:value="${client}" class="editform">
+					
+						<a th:href="@{/client/edit(id=${client.id})}">
+							<img th:src="@{/images/edit.png}" class="img">
+						</a>
+						<input name="id" type="hidden" th:value="${client.id}">
+						
+						<button type="submit">
+							<img th:src="@{/images/delete.png}" class="img">
+						</button>
+					</form>
+				</td>
+	        </tr>
+	    </table>
+	</main>
+</body>
+</html>
