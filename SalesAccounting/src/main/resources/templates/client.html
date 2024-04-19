@@ -7,19 +7,21 @@
 	<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
 </head>
 	<header>
-		<a href="/">
-		    <img th:src="@{/images/logo.png}" width="60" height="60"/>
-		</a>
+		<div class="main">
 		<h2 class="logo" style="color:midnightblue">Клиенты</h2>
-		 <div class="menu">
-        <ul>
-			<li><a href="client">Клиенты</a></li>
-			<li><a href="services">Сервисы</a></li>
-			<li><a href="payment">Продажи сервисов</a></li>
-		</ul>
 		</div>
-	</header>
-		<main>
+		</header>
+		<div class="sidenav">
+			<a href="/">
+				 <img th:src="@{/images/logo.png}" width="60" height="60"/>
+				 </a>
+				 <a href="client">Клиенты</a>
+				 <br>
+				 <a href="services">Сервисы</a>
+				 <br>
+				 <a href="payment">Учёт продаж</a>
+				 </div>
+		<div class="main">
 		<table>
 	        <tr>
 	            <th>№</th>
@@ -53,5 +55,6 @@
 	        </tr>
 	    </table>
 	</main>
+
 </body>
 </html>
